@@ -18,7 +18,7 @@
                 "Image": "justmert/lilypad-hugging:v0.0.14",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
-                    {{.FilesCID}}
+                    {{.FilesCID}},
                     "OUTPUT_DIR=/output/",
                     "INPUT_DIR=/input/"
                 ],
