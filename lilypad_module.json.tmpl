@@ -2,7 +2,7 @@
     "machine": {
         "gpu": 1,
         "cpu": 1000,
-        "ram": 100
+        "ram": 1000
     },
     "job": {
         "APIVersion": "V1beta1",
@@ -15,7 +15,7 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Image": "justmert/lilypad-hugging:v0.0.10",
+                "Image": "justmert/lilypad-hugging:v0.0.11",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
                     "OUTPUT_DIR=/output/",
@@ -23,7 +23,7 @@
                 ],
                 "Entrypoint": [
                 "bash", "-c",
-                    "python3 ./inference.py"
+                    "python3 ./inference.py", {{.FilesCID}}
                 ]
 
             },
@@ -32,7 +32,7 @@
                 "JobContext": {}
             },
             "PublisherSpec": {
-                "Type": "ipfs"
+                "Type": "Estuary"
             },
             "Resources": {
                 "GPU": "1"
@@ -45,14 +45,6 @@
             "Network": {
                 "Type": "None"
             },
-            "inputs": [
-            {
-                "CID": {{.FilesCID}},
-                "Name": "input",
-                "StorageSource": "IPFS",
-                "path": "/input"
-            }
-            ],
             "outputs": [
                 {
                     "Name": "output",
