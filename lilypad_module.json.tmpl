@@ -15,16 +15,12 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Entrypoint": [
-                    "bash", "-c",
-                    "python3 inference.py"
-                ],
                 "Image": "justmert/lilypad-hugging:v0.0.2",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
                     "OUTPUT_DIR=/outputs/",
                     "HF_HUB_OFFLINE=1"
-                ]
+                ],
                 "Entrypoint": [
                 "bash", "-c", "(cd /app && python3 inference.py)"
                 ]
@@ -53,7 +49,7 @@
                 "CID": {{.filesCID}},
                 "Name": "lilypad_hugging_input",
                 "StorageSource": "IPFS",
-                "path": "/input",
+                "path": "/input"
             },
             ],
 
