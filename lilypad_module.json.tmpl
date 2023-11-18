@@ -15,7 +15,7 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Image": "justmert/lilypad-hugging:v0.0.3",
+                "Image": "justmert/lilypad-hugging:v0.0.4",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
                     "OUTPUT_DIR=/outputs/",
