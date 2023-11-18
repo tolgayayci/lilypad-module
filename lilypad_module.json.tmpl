@@ -15,13 +15,14 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Image": "justmert/lilypad-hugging:v0.0.4",
+                "Image": "justmert/lilypad-hugging:v0.0.6",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
                     "OUTPUT_DIR=/output/"
                 ],
                 "Entrypoint": [
-                "python3", "/app/inference.py"
+                "bash", "-c",
+                    "python3 /app/inference.py"
                 ]
 
             },
