@@ -18,7 +18,8 @@
                 "Image": "justmert/lilypad-hugging:v0.0.10",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
-                    "OUTPUT_DIR=/output/"
+                    "OUTPUT_DIR=/output/",
+                    "INPUT_DIR=/input/"
                 ],
                 "Entrypoint": [
                 "bash", "-c",
@@ -46,8 +47,8 @@
             },
             "inputs": [
             {
-                "CID": {{.CID}},
-                "Name": "lilypad_hugging_input",
+                "CID": {{.FilesCID}},
+                "Name": "input",
                 "StorageSource": "IPFS",
                 "path": "/input"
             }
