@@ -16,6 +16,10 @@
             },
             "Docker": {
                 "Image": "justmert/lilypad-hugging:v0.0.10",
+                "EnvironmentVariables": [
+                    {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
+                    "OUTPUT_DIR=/output/"
+                ],
                 "Entrypoint": [
                 "bash", "-c",
                     "python3 ./inference.py"
