@@ -32,7 +32,7 @@
                 "JobContext": {}
             },
             "PublisherSpec": {
-                "Type": "Estuary"
+                "Type": "ipfs"
             },
             "Resources": {
                 "GPU": "1"
@@ -46,12 +46,12 @@
                 "Type": "None"
             },
             "inputs": [
-            {
-                "CID": {{.FilesCID}},
-                "Name": "input",
-                "StorageSource": "IPFS",
-                "path": "./input/"
-            }
+                {
+                "StorageSource": "urlDownload",
+                "Name": "inputs",
+                "URL": "{{printf "https://gateway.lighthouse.storage/ipfs/\%s .FilesCID}}",
+                "Path": "/inputs"
+                }
             ],
             "outputs": [
                 {
