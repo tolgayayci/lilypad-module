@@ -18,20 +18,16 @@
                 "Image": "justmert/lilypad-hugging:v0.0.4",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
-                    "OUTPUT_DIR=/outputs/",
-                    "HF_HUB_OFFLINE=1"
+                    "OUTPUT_DIR=/output/",
                 ],
                 "Entrypoint": [
-                "bash", "-c", "python3 inference.py"
+                "python3 /app/inference.py"
                 ]
 
             },
             "Engine": "Docker",
             "Language": {
                 "JobContext": {}
-            },
-            "Network": {
-                "Type": "None"
             },
             "PublisherSpec": {
                 "Type": "Estuary"
@@ -46,7 +42,7 @@
             },
             "inputs": [
             {
-                "CID": {{.filesCID}},
+                "CID": cid,
                 "Name": "lilypad_hugging_input",
                 "StorageSource": "IPFS",
                 "path": "/input"
@@ -54,9 +50,9 @@
             ],
             "outputs": [
                 {
-                    "Name": "outputs",
+                    "Name": "output",
                     "StorageSource": "IPFS",
-                    "path": "/outputs"
+                    "path": "/output"
                 }
             ]
         }
